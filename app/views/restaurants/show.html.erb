@@ -1,0 +1,19 @@
+<h2><%= @restaurant.name.titleize %></h2>
+<h4>Stop by for some delicious <%= @restaurant.category.titleize %> food!</h4>
+<hr>
+<p><%= @restaurant.address %></p>
+<p>Contact: <%= @restaurant.phone_number %></p>
+<hr>
+<h4>What people say</h4>
+<p>Been to <%= @restaurant.name%>?</p>
+<p><%= link_to 'Tell us about it ...', new_restaurant_review_path(@restaurant) %></p>
+<div class='review-list'>
+  <% @restaurant.reviews.each do |review| %>
+    <div class='review'>
+      <p><%= '*' * review.rating %></p>
+      <p><%= review.content %></p>
+    </div>
+  <% end %>
+</div>
+<hr>
+<%= link_to 'Back to all Restaurants', restaurants_path %>
